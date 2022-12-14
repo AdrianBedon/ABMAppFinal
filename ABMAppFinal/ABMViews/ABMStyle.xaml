@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="ABMAppFinal.ABMViews.ABMStyle"
+      HeightRequest="200"
+      BackgroundColor="Black">
+    <Image
+        Source="vehicle_menu.jpg"
+        Aspect="AspectFill"
+        Opacity="0.6"/>
+    <Grid ColumnDefinitions="*,*">
+        <Frame
+            CornerRadius="100"
+            WidthRequest="100"
+            HeightRequest="100">
+            <Image
+                x:Name="ABMUserImage"
+                HeightRequest="100"
+                WidthRequest="100"
+                Source="default_user.jpg"
+                Aspect="AspectFill"/>
+        </Frame>
+        <Label
+            x:Name="ABMUserName"
+            Grid.Column="1"
+            Margin="20"
+            Text="Unknown User"
+            TextColor="White"
+            FontAttributes="Bold"
+            FontSize="20"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="End"/>
+    </Grid>
+</Grid>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMAppFinal.ABMViews.ABMMenuUser"
+             Title="Menú de Usuario">
+    <Grid BackgroundColor="White">
+        <Image Source="wallpaper.jpg"
+               Aspect="AspectFill"
+               Opacity="0.8"/>
+        <VerticalStackLayout Margin="20" Spacing="20">
+            <Label HeightRequest="250"/>
+            <Button
+            x:Name="ABMLoginU"
+            Text="Iniciar Sesión"
+            BackgroundColor="Black"
+            Clicked="ABMLogin_Clicked"
+            HorizontalOptions="Center" />
+            <Button 
+            x:Name="ABMRegister"
+            Text="Registrarse"
+            BackgroundColor="Black"
+            Clicked="ABMRegister_Clicked"
+            HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

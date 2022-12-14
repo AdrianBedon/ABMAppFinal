@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMAppFinal.ABMViews.ABMMain"
+             Title="Vehículos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+    </ContentPage.ToolbarItems>
+    <Grid BackgroundColor="White">
+        <Image Source="wallpaper.jpg"
+               Aspect="AspectFill"
+               Opacity="0.5"/>
+        <CollectionView x:Name="vehiclesCollection"
+                    ItemsSource="{Binding Vehicles}"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChanged="vehiclesCollection_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid ColumnDefinitions="*,*">
+                            <Image Source="{Binding abmPicture}"
+                               HeightRequest="50"
+                               WidthRequest="100"
+                               Aspect="AspectFill"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="{Binding abmModelo}" FontAttributes="Bold"/>
+                                <Label Text="{Binding abmMarca}"/>
+                                <Label Text="{Binding abmYear}" FontAttributes="Italic" TextColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

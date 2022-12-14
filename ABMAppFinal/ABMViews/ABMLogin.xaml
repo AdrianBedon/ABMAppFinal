@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMAppFinal.ABMViews.ABMLogin"
+             Title="Log In">
+    <Grid BackgroundColor="White">
+        <Image Source="wallpaper.jpg"
+               Opacity="0.7"
+               Aspect="AspectFill"/>
+        <StackLayout Margin="30" Spacing="10">
+            <Label
+                HeightRequest="200"/>
+            <Label 
+                Text="Username" 
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"/>
+            <Entry x:Name="ABMUsername"
+                Placeholder="Ingrese su nombre de usuario"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+            <Label 
+                Text="Contraseña" 
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"/>
+            <Entry x:Name="ABMPassword"
+                Placeholder="Ingrese su contraseña"
+                BackgroundColor="WhiteSmoke"
+                IsPassword="True"
+                HeightRequest="40"/>
+            <Label/>
+            <Button x:Name="ABMLogIn"
+                    Text="Iniciar Sesión"
+                    Clicked="ABMLogIn_Clicked"
+                    BackgroundColor="Black"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

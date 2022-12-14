@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMAppFinal.ABMViews.ABMAddVehicle"
+             Title="Agregar Vehiculo">
+    <Grid BackgroundColor="White">
+        <Image Source="wallpaper.jpg"
+               Aspect="AspectFill"
+               Opacity="0.7"/>
+        <ScrollView>
+            <VerticalStackLayout Margin="20" Spacing="6">
+                <Label 
+                Text="Modelo:" 
+                HorizontalOptions="Start"/>
+                <Entry x:Name="ABMModelo"
+                Placeholder="Ingrese el modelo de su vehículo"
+                Text="{Binding abmModelo}"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+                <Label 
+                Text="Marca:"
+                HorizontalOptions="Start"/>
+                <Entry x:Name="ABMMarca"
+                Placeholder="Ingrese la marca de su vehículo"
+                Text="{Binding abmMarca}"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="2">
+                    <StackLayout>
+                        <Label
+                        Text="Año:"
+                        HorizontalOptions="Start"/>
+                        <Entry x:Name="ABMYear"
+                           Keyboard="Numeric"
+                           BackgroundColor="WhiteSmoke"
+                           Placeholder="yyyy"
+                           Loaded="ABMYear_Loaded"
+                           Completed="ABMYear_Completed"
+                           Text="{Binding abmYear}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Label FontSize="10"/>
+                        <Stepper
+                        x:Name="ABMStepper"
+                        Minimum="1890" Maximum="2022" Increment="1" ValueChanged="OnValueChanged"/>
+                    </StackLayout>
+                </Grid>
+                <Label 
+                Text="Placa:"
+                HorizontalOptions="Start" />
+                <Entry x:Name="ABMPlaca"
+                Placeholder="Ingrese la placa de su vehículo"
+                Text="{Binding abmPlaca}"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+                <Label 
+                Text="Precio:"
+                HorizontalOptions="Start" />
+                <Entry x:Name="ABMPrecio"
+                Placeholder="Ingrese el precio de su vehículo"
+                Text="{Binding abmPrecio}"
+                BackgroundColor="WhiteSmoke"
+                Keyboard="Numeric"
+                HeightRequest="40"/>
+                <Label 
+                Text="Ciudad:"
+                HorizontalOptions="Start"/>
+                <Entry x:Name="ABMCiudad"
+                Placeholder="Ingrese la ciudad de su vehículo"
+                Text="{Binding abmCiudad}"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+                <Button x:Name="ABMImage"
+                    Text="Add Photo"
+                    Clicked="OnAddPhoto_Clicked"
+                    BackgroundColor="Black"/>
+                <Image x:Name="ImageStream"
+                Source="{Binding abmPicture}"
+                HeightRequest="200"/>
+                <Button x:Name="ABMSaveButton"
+                Text="Guardar Información"
+                Clicked="SaveButton_Clicked"
+                BackgroundColor="Black"/>
+                <Button x:Name="ABMDeleteButton"
+                Text="Eliminar Vehículo"
+                Clicked="DeleteButton_Clicked"
+                BackgroundColor="Black"
+                IsVisible="False"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

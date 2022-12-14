@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ABMAppFinal.ABMViews.ABMRegisterUser"
+             Title="Registrar Usuario">
+    <Grid BackgroundColor="White">
+        <Image Source="wallpaper.jpg"
+               Aspect="AspectFill"
+               Opacity="0.7"/>
+        <VerticalStackLayout Margin="30" Spacing="10">
+            <Label 
+                Text="Nombres" 
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"/>
+            <Entry x:Name="ABMNames"
+                Placeholder="Ingrese sus nombres completos"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+            <Label 
+                Text="Nombre de Usuario" 
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"/>
+            <Entry x:Name="ABMUsername"
+                Placeholder="Ingrese un nombre de usuario"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"/>
+            <Label 
+                Text="Contraseña" 
+                HorizontalOptions="Center"
+                FontSize="15"
+                FontAttributes="Bold"/>
+            <Entry x:Name="ABMPassword"
+                Placeholder="Ingrese su contraseña"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="40"
+                IsPassword="True"/>
+            <Button x:Name="ABMImageUser"
+                    Text="Add Profile Picture"
+                    Clicked="ABMImageUser_Clicked"
+                    BackgroundColor="Black"/>
+            <Image x:Name="ImageStreamUser"
+                Source="{Binding abmPicture}"
+                WidthRequest="300"
+                HeightRequest="300"/>
+            <Button x:Name="ABMSvBtnUser"
+                    Text="Registrar Usuario"
+                    Clicked="ABMSvBtnUser_Clicked"
+                    BackgroundColor="Black"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
