@@ -3,13 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       x:Class="ABMAppFinal.ABMViews.ABMStyle"
       HeightRequest="200"
-      BackgroundColor="Black">
+      BackgroundColor="#1B2631">
     <Image
-        Source="vehicle_menu.jpg"
+        Source="vehicle_flyoutmenu.jpg"
         Aspect="AspectFill"
-        Opacity="0.6"/>
-    <Grid ColumnDefinitions="*,*">
+        Opacity="0.5"/>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="2"
+          Margin="10">
         <Frame
+            HorizontalOptions="Center"
+            CornerRadius="110"
+            WidthRequest="110"
+            HeightRequest="110"
+            BackgroundColor="#F1C40F"
+            BorderColor="#F1C40F"/>
+        <Frame
+            HorizontalOptions="Center"
             CornerRadius="100"
             WidthRequest="100"
             HeightRequest="100">
@@ -20,15 +30,25 @@
                 Source="default_user.jpg"
                 Aspect="AspectFill"/>
         </Frame>
-        <Label
-            x:Name="ABMUserName"
-            Grid.Column="1"
-            Margin="20"
-            Text="Unknown User"
-            TextColor="White"
-            FontAttributes="Bold"
-            FontSize="20"
-            VerticalTextAlignment="Center"
-            HorizontalTextAlignment="End"/>
+        <StackLayout Grid.Column="1"
+                     VerticalOptions="Center">
+            <Label x:Name="ABMUserName"
+                   Text="Unknown User"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"/>
+            <Button x:Name="ABMProfileUser"
+                    BackgroundColor="Transparent"
+                    Text="Registrarse"
+                    TextColor="#F1C40F"
+                    FontSize="15"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Clicked="ABMProfileUser_Clicked"
+                    WidthRequest="100"/>
+        </StackLayout>
     </Grid>
 </Grid>

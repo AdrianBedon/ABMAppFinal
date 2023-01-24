@@ -3,89 +3,104 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ABMAppFinal.ABMViews.ABMAddVehicle"
              Title="Agregar Vehiculo">
-    <Grid BackgroundColor="White">
+    <Grid BackgroundColor="#1B2631">
         <Image Source="wallpaper.jpg"
                Aspect="AspectFill"
-               Opacity="0.7"/>
+               Opacity="0.3"/>
         <ScrollView>
             <VerticalStackLayout Margin="20" Spacing="6">
-                <Label 
-                Text="Modelo:" 
-                HorizontalOptions="Start"/>
+                <Label Text="Modelo:" 
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       TextColor="#F1C40F"/>
                 <Entry x:Name="ABMModelo"
-                Placeholder="Ingrese el modelo de su vehículo"
-                Text="{Binding abmModelo}"
-                BackgroundColor="WhiteSmoke"
-                HeightRequest="40"/>
+                       Placeholder="Ingrese el modelo de su vehículo"
+                       Text="{Binding abmModelo}"
+                       HeightRequest="40"
+                       TextColor="White"/>
                 <Label 
-                Text="Marca:"
-                HorizontalOptions="Start"/>
+                    Text="Marca:"
+                    HorizontalOptions="Start"
+                    FontAttributes="Bold"
+                    TextColor="#F1C40F"/>
                 <Entry x:Name="ABMMarca"
-                Placeholder="Ingrese la marca de su vehículo"
-                Text="{Binding abmMarca}"
-                BackgroundColor="WhiteSmoke"
-                HeightRequest="40"/>
+                       Placeholder="Ingrese la marca de su vehículo"
+                       Text="{Binding abmMarca}"
+                       TextColor="White"
+                       HeightRequest="40"/>
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="2">
                     <StackLayout>
                         <Label
-                        Text="Año:"
-                        HorizontalOptions="Start"/>
+                            Text="Año:"
+                            HorizontalOptions="Start"
+                            FontAttributes="Bold"
+                            TextColor="#F1C40F"/>
                         <Entry x:Name="ABMYear"
-                           Keyboard="Numeric"
-                           BackgroundColor="WhiteSmoke"
-                           Placeholder="yyyy"
-                           Loaded="ABMYear_Loaded"
-                           Completed="ABMYear_Completed"
-                           Text="{Binding abmYear}"/>
+                               Keyboard="Numeric"
+                               TextColor="White"
+                               Placeholder="yyyy"
+                               Loaded="ABMYear_Loaded"
+                               Completed="ABMYear_Completed"
+                               Text="{Binding abmYear}"/>
                     </StackLayout>
                     <StackLayout Grid.Column="1">
                         <Label FontSize="10"/>
-                        <Stepper
-                        x:Name="ABMStepper"
-                        Minimum="1890" Maximum="2022" Increment="1" ValueChanged="OnValueChanged"/>
+                        <Stepper x:Name="ABMStepper"
+                                 Minimum="1895"
+                                 Maximum="2022"
+                                 Increment="1"
+                                 ValueChanged="OnValueChanged"/>
                     </StackLayout>
                 </Grid>
-                <Label 
-                Text="Placa:"
-                HorizontalOptions="Start" />
+                <Label Text="Placa:"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       TextColor="#F1C40F"/>
                 <Entry x:Name="ABMPlaca"
-                Placeholder="Ingrese la placa de su vehículo"
-                Text="{Binding abmPlaca}"
-                BackgroundColor="WhiteSmoke"
-                HeightRequest="40"/>
-                <Label 
-                Text="Precio:"
-                HorizontalOptions="Start" />
+                       Placeholder="Ingrese la placa de su vehículo"
+                       Text="{Binding abmPlaca}"
+                       TextColor="White"
+                       HeightRequest="40"/>
+                <Label Text="Precio:"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       TextColor="#F1C40F"/>
                 <Entry x:Name="ABMPrecio"
-                Placeholder="Ingrese el precio de su vehículo"
-                Text="{Binding abmPrecio}"
-                BackgroundColor="WhiteSmoke"
-                Keyboard="Numeric"
-                HeightRequest="40"/>
-                <Label 
-                Text="Ciudad:"
-                HorizontalOptions="Start"/>
+                       Placeholder="Ingrese el precio de su vehículo"
+                       Text="{Binding abmPrecio}"
+                       TextColor="White"
+                       Keyboard="Numeric"
+                       HeightRequest="40"/>
+                <Label Text="Ciudad:"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       TextColor="#F1C40F"/>
                 <Entry x:Name="ABMCiudad"
-                Placeholder="Ingrese la ciudad de su vehículo"
-                Text="{Binding abmCiudad}"
-                BackgroundColor="WhiteSmoke"
-                HeightRequest="40"/>
+                       Placeholder="Ingrese la ciudad de su vehículo"
+                       Text="{Binding abmCiudad}"
+                       TextColor="White"
+                       HeightRequest="40"/>
                 <Button x:Name="ABMImage"
-                    Text="Add Photo"
-                    Clicked="OnAddPhoto_Clicked"
-                    BackgroundColor="Black"/>
+                        Text="Add Photo"
+                        Clicked="OnAddPhoto_Clicked"
+                        TextColor="#F1C40F"
+                        FontAttributes="Bold"
+                        BackgroundColor="Transparent"/>
                 <Image x:Name="ImageStream"
-                Source="{Binding abmPicture}"
-                HeightRequest="200"/>
+                       Source="{Binding abmPicture}"
+                       HeightRequest="200"/>
                 <Button x:Name="ABMSaveButton"
-                Text="Guardar Información"
-                Clicked="SaveButton_Clicked"
-                BackgroundColor="Black"/>
-                <Button x:Name="ABMDeleteButton"
-                Text="Eliminar Vehículo"
-                Clicked="DeleteButton_Clicked"
-                BackgroundColor="Black"
-                IsVisible="False"/>
+                        Text="Guardar Información"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        Clicked="SaveButton_Clicked"
+                        BackgroundColor="#F1C40F"/>
+                <Button x:Name="ABMCancelButton"
+                        Text="Cancel"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        Clicked="CancelButton_Clicked"
+                        BackgroundColor="#F1C40F"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

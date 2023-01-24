@@ -1,39 +1,28 @@
+using ABMAppFinal.ABMModels;
+
 namespace ABMAppFinal.ABMViews;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 public partial class ABMViewPage : ContentPage
 {
-    string _filename = Path.Combine(FileSystem.AppDataDirectory, "vehicles.txt");
+    ABMVehicle ABMItem = new ABMVehicle();
     public ABMViewPage()
 	{
 		InitializeComponent();
-
-        string appDataPath = FileSystem.AppDataDirectory;
-        string randomFileName = $"{Path.GetRandomFileName()}.vehicles.txt";
-
-        LoadVehicle(Path.Combine(appDataPath, randomFileName));
+        LoadVehicle();
     }
 
-    private void LoadVehicle(string filename)
+    private void LoadVehicle(int value = -1)
     {
-        ABMModels.ABMVehicle vehicleModel = new ABMModels.ABMVehicle();
-        vehicleModel.Filename = filename;
-
-        if (File.Exists(filename))
+        if (value > -1)
         {
-            vehicleModel.abmModelo = File.ReadAllLines(filename)[0];
-            vehicleModel.abmMarca = File.ReadAllLines(filename)[1];
-            vehicleModel.abmYear = Int16.Parse(File.ReadAllLines(filename)[2]);
-            vehicleModel.abmPlaca = File.ReadAllLines(filename)[3];
-            vehicleModel.abmPrecio = Double.Parse(File.ReadAllLines(filename)[4]);
-            vehicleModel.abmCiudad = File.ReadAllLines(filename)[5];
-            vehicleModel.abmPicture = File.ReadAllLines(filename)[6];
+            ABMItem = App.VehiclesRepo.GetVehicle(value);
         }
 
-        BindingContext = vehicleModel;
+            BindingContext = ABMItem;
     }
 
-    public string ItemId
+    public int ItemId
     {
         set { LoadVehicle(value); }
     }

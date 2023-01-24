@@ -1,3 +1,5 @@
+using Microsoft.Maui.Controls.Internals;
+
 namespace ABMAppFinal.ABMViews;
 
 public partial class ABMStyleFooter : StackLayout
@@ -7,16 +9,31 @@ public partial class ABMStyleFooter : StackLayout
 		InitializeComponent();
 	}
 
-    private void ABMLogOut_Clicked(object sender, EventArgs e)
+    private async void ABMLgOutLgIn_Clicked(object sender, EventArgs e)
     {
-        ABMViews.ABMStyle appHeader = new ABMViews.ABMStyle();
-        ABMViews.ABMStyleFooter appFooter = new ABMViews.ABMStyleFooter();
-        AppShell.Current.FlyoutHeader = appHeader;
-        AppShell.Current.FlyoutFooter = appFooter;
+        if (ABMLogOutLogIn.Text == "Iniciar Sesión")
+        {
+            await Shell.Current.GoToAsync($"//{nameof(ABMLogin)}");
+        }
+        else
+        {
+            App.UserApp = null;
+            App.appHeader.LoadData();
+            App.appFooter.LoadData();
+            await Shell.Current.GoToAsync($"//{nameof(ABMLogin)}");
+        }
     }
 
-    public void SetAvailable()
+    public void LoadData()
     {
-        ABMLogOut.IsVisible= true;
+        if (App.UserApp != null)
+        {
+            ABMLogOutLogIn.Text = "Cerrar Sesión";
+        }
+        else
+        {
+            ABMLogOutLogIn.Text = "Iniciar Sesión";
+        }
+        
     }
 }

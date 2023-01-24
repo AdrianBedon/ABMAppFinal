@@ -5,11 +5,12 @@
              Margin="20"
              Spacing="20">
     <Button 
-        x:Name="ABMLogOut"
-        Text="Cerrar Sesión"
+        x:Name="ABMLogOutLogIn"
+        Text="Iniciar Sesión"
         BackgroundColor="Black"
-        Clicked="ABMLogOut_Clicked"
+        Clicked="ABMLgOutLgIn_Clicked"
         HorizontalOptions="Center"
         VerticalOptions="Center"
-        IsVisible="False"/>
+        TextColor="#F1C40F"
+        FontAttributes="Bold"/>
 </StackLayout>

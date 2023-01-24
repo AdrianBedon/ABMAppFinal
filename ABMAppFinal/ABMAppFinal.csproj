@@ -52,9 +52,14 @@
 	  <None Remove="Resources\Images\default_user.jpg" />
 	  <None Remove="Resources\Images\user_icon.png" />
 	  <None Remove="Resources\Images\vehicles_icon.png" />
+	  <None Remove="Resources\Images\vehicle_flyoutmenu.jpg" />
 	  <None Remove="Resources\Images\vehicle_icon.png" />
-	  <None Remove="Resources\Images\vehicle_menu.jpg" />
 	  <None Remove="Resources\Images\wallpaper.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -68,9 +73,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ABMViews\ABMMain.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="ABMViews\ABMMenuUser.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ABMViews\ABMRegisterUser.xaml">

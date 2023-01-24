@@ -1,9 +1,9 @@
+using ABMAppFinal.ABMModels;
+
 namespace ABMAppFinal.ABMViews;
 
 public partial class ABMLogin : ContentPage
 {
-    string appDataPath = FileSystem.AppDataDirectory;
-    string _filename = Path.Combine(FileSystem.AppDataDirectory, "users.txt");
     public ABMLogin()
 	{
 		InitializeComponent();
@@ -11,28 +11,31 @@ public partial class ABMLogin : ContentPage
 
     private async void ABMLogIn_Clicked(object sender, EventArgs e)
     {
-        string randomFileName = ABMUsername.Text + ".users.txt";
-        string Filename = Path.Combine(appDataPath, randomFileName);
-        if (File.Exists(Filename))
+        ABMUser userLogin = App.VehiclesRepo.GetUser(ABMUsername.Text);
+        
+        if (ABMPassword.Text.Equals(userLogin.abmPassword))
         {
-            if (ABMPassword.Text.Equals(File.ReadAllLines(Filename)[2]))
-            {
-                ABMStyle appHeader = new ABMStyle();
-                appHeader.SetData(ABMUsername.Text, File.ReadAllLines(Filename)[3]);
-                AppShell.Current.FlyoutHeader = appHeader;
-                ABMStyleFooter appFooter = new ABMStyleFooter();
-                AppShell.Current.FlyoutFooter = appFooter;
-                appFooter.SetAvailable();
-                await Shell.Current.GoToAsync("..");
-            }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("User Error", "Username or Password Error", "Ok");
-            }
+            App.UserApp = userLogin;
+            App.appHeader.LoadData();
+            App.appFooter.LoadData();
+            await Shell.Current.GoToAsync($"//{nameof(ABMMain)}");
         }
         else
         {
             await App.Current.MainPage.DisplayAlert("User Error", "Username or Password Error", "Ok");
         }
+    }
+
+    private async void ABMRegister_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(ABMRegisterUser));
+    }
+
+    private async void ABMContinue_Clicked(object sender, EventArgs e)
+    {
+        App.UserApp = null;
+        App.appHeader.LoadData();
+        App.appFooter.LoadData();
+        await Shell.Current.GoToAsync($"//{nameof(ABMMain)}");
     }
 }

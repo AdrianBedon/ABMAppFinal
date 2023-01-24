@@ -1,3 +1,5 @@
+using ABMAppFinal.ABMModels;
+
 namespace ABMAppFinal.ABMViews;
 
 public partial class ABMMain : ContentPage
@@ -5,13 +7,26 @@ public partial class ABMMain : ContentPage
 	public ABMMain()
 	{
 		InitializeComponent();
-
-		BindingContext = new ABMModels.ABMAllVehicles();
+        LoadVehicles();
 	}
+
+    public void LoadVehicles()
+    {
+        List<ABMVehicle> vehicle = App.VehiclesRepo.GetAllVehicles();
+        ABMvehicles.ItemsSource = vehicle;
+        if (App.UserApp == null)
+        {
+            Add.IsEnabled = false;
+        }
+        else
+        {
+            Add.IsEnabled = true;
+        }
+    }
 
     protected override void OnAppearing()
     {
-        ((ABMModels.ABMAllVehicles)BindingContext).LoadVehicles();
+        LoadVehicles();
     }
 
     private async void vehiclesCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -19,10 +34,10 @@ public partial class ABMMain : ContentPage
         if (e.CurrentSelection.Count != 0)
         {
             var vehicle = (ABMModels.ABMVehicle)e.CurrentSelection[0];
+                
+            await Shell.Current.GoToAsync($"{nameof(ABMViewPage)}?{nameof(ABMViewPage.ItemId)}={vehicle.Id}");
 
-            await Shell.Current.GoToAsync($"{nameof(ABMViewPage)}?{nameof(ABMViewPage.ItemId)}={vehicle.Filename}");
-
-            vehiclesCollection.SelectedItem = null;
+            ABMvehicles.SelectedItem = null;
         }
     }
 

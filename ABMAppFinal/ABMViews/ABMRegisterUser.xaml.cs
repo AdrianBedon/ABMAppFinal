@@ -1,15 +1,33 @@
+using ABMAppFinal.ABMModels;
+
 namespace ABMAppFinal.ABMViews;
 
 public partial class ABMRegisterUser : ContentPage
 {
+    ABMUser ABMItemU = new ABMUser();
     string imagePath { get; set; }
-    string appDataPath = FileSystem.AppDataDirectory;
-    string _filename = Path.Combine(FileSystem.AppDataDirectory, "users.txt");
     public ABMRegisterUser()
 	{
         InitializeComponent();
+        LoadData();
 	}
 
+    public void LoadData()
+    {
+        if (App.UserApp != null)
+        {
+            ABMItemU = App.UserApp;
+            imagePath = App.UserApp.abmProfilePicture;
+            ABMSvBtnUser.Text = "Edit Profile";
+        }
+        else
+        {
+            
+            ABMItemU = new ABMUser();
+            ABMSvBtnUser.Text = "Registrar Usuario";
+        }
+        BindingContext = ABMItemU;
+    }
     private async void ABMImageUser_Clicked(object sender, EventArgs e)
     {
         ImageStreamUser.Source = "";
@@ -31,17 +49,28 @@ public partial class ABMRegisterUser : ContentPage
 
     private async void ABMSvBtnUser_Clicked(object sender, EventArgs e)
     {
-        string randomFileName = ABMUsername.Text + ".users.txt";
-        string Filename = Path.Combine(appDataPath, randomFileName);
-        string[] data = new string[4];
-        data[0] = ABMNames.Text;
-        data[1] = ABMUsername.Text;
-        data[2] = ABMPassword.Text;
-        data[3] = imagePath;
-        File.WriteAllLines(Filename, data);
+        ABMItemU.abmNames = ABMNames.Text;
+        ABMItemU.abmEmail = ABMEmail.Text;
+        ABMItemU.abmUsername = ABMUsername.Text;
+        ABMItemU.abmPassword = ABMPassword.Text;
+        ABMItemU.abmProfilePicture = imagePath;
 
-        await App.Current.MainPage.DisplayAlert("User", "User created!", "Ok");
+        if (ABMSvBtnUser.Text == "Edit Profile")
+        {
+            App.VehiclesRepo.UpdateUser(ABMItemU);
+            App.appHeader.LoadData();
 
-        await Shell.Current.GoToAsync("..");
+            await App.Current.MainPage.DisplayAlert("User", "User profile updated!", "Ok");
+
+            await Shell.Current.GoToAsync("..");
+        }
+        else
+        {
+            App.VehiclesRepo.AddNewUser(ABMItemU);
+
+            await App.Current.MainPage.DisplayAlert("User", "User created!", "Ok");
+
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

@@ -2,38 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ABMAppFinal.ABMViews.ABMLogin"
-             Title="Log In">
-    <Grid BackgroundColor="White">
+             >
+    <Grid BackgroundColor="#1B2631">
         <Image Source="wallpaper.jpg"
-               Opacity="0.7"
+               Opacity="0.3"
                Aspect="AspectFill"/>
         <StackLayout Margin="30" Spacing="10">
-            <Label
-                HeightRequest="200"/>
-            <Label 
-                Text="Username" 
-                HorizontalOptions="Center"
-                FontSize="15"
-                FontAttributes="Bold"/>
+            <Label HeightRequest="200"/>
+            <Label Text="Username" 
+                   HorizontalOptions="Center"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="#F1C40F"/>
             <Entry x:Name="ABMUsername"
-                Placeholder="Ingrese su nombre de usuario"
-                BackgroundColor="WhiteSmoke"
-                HeightRequest="40"/>
-            <Label 
-                Text="Contraseña" 
-                HorizontalOptions="Center"
-                FontSize="15"
-                FontAttributes="Bold"/>
+                   Placeholder="Ingrese su nombre de usuario"
+                   HeightRequest="40"
+                   TextColor="White"/>
+            <Label Text="Contraseña" 
+                   HorizontalOptions="Center"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   TextColor="#F1C40F"/>
             <Entry x:Name="ABMPassword"
-                Placeholder="Ingrese su contraseña"
-                BackgroundColor="WhiteSmoke"
-                IsPassword="True"
-                HeightRequest="40"/>
+                   Placeholder="Ingrese su contraseña"
+                   IsPassword="True"
+                   HeightRequest="40"
+                   TextColor="White"/>
             <Label/>
             <Button x:Name="ABMLogIn"
                     Text="Iniciar Sesión"
+                    FontAttributes="Bold"
+                    TextColor="Black"
                     Clicked="ABMLogIn_Clicked"
-                    BackgroundColor="Black"/>
+                    BackgroundColor="#F1C40F"/>
+            <Button x:Name="ABMRegister"
+                    Text="¿No tienes una cuenta aún? Registrate"
+                    BackgroundColor="Transparent"
+                    Clicked="ABMRegister_Clicked"
+                    TextColor="#F1C40F"
+                    FontAttributes="Bold"/>
+            <Button x:Name="ABMContinue"
+                    Text="O...Continuar sin una Cuenta"
+                    BackgroundColor="Transparent"
+                    Clicked="ABMContinue_Clicked"
+                    TextColor="#F1C40F"
+                    FontAttributes="Bold"/>
         </StackLayout>
     </Grid>
 </ContentPage>

@@ -5,42 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ABMAppFinal.ABMViews"
     FlyoutIcon="Menu"
-    BackgroundColor="Black">
+    BackgroundColor="Black"
+    Shell.TabBarIsVisible="False">
 
-    <Shell.FlyoutHeader>
-        <Grid HeightRequest="200"
-              BackgroundColor="Black">
-            <Image
-                Source="vehicle_menu.jpg"
-                Aspect="AspectFill"
-                Opacity="0.6"/>
-            <Grid ColumnDefinitions="*,*">
-                <Frame
-                    CornerRadius="100"
-                    WidthRequest="100"
-                    HeightRequest="100">
-                    <Image
-                        x:Name="ABMUserImage"
-                        HeightRequest="100"
-                        WidthRequest="100"
-                        Source="default_user.jpg"
-                        Aspect="AspectFill"/>
-                </Frame>
-                <Label
-                    x:Name="ABMUserName"
-                    Grid.Column="1"
-                    Margin="20"
-                    Text="Unknown User"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    FontSize="20"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="End"/>
-            </Grid>
-        </Grid>
-    </Shell.FlyoutHeader>
+    <ShellContent
+        ContentTemplate="{DataTemplate local:ABMLogin}"
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Route="ABMLogin"/>
 
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem Route="ABMMain" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
             Title="Vehículos"
             Icon="vehicle_icon.png"
@@ -50,8 +24,4 @@
             Icon="vehicles_icon.png"
             ContentTemplate="{DataTemplate local:ABMListEdit}"/>
     </FlyoutItem>
-
-    <ShellContent Title="User Menu"
-                  Icon="user_icon.png"
-                  ContentTemplate="{DataTemplate local:ABMMenuUser}"/>
 </Shell>

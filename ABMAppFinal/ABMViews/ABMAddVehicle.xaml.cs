@@ -1,57 +1,52 @@
+using ABMAppFinal.ABMModels;
+
 namespace ABMAppFinal.ABMViews;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 public partial class ABMAddVehicle : ContentPage
 {
+    ABMVehicle ABMItem = new ABMVehicle();
     string imagePath { get; set; }
-    string _filename = Path.Combine(FileSystem.AppDataDirectory, "vehicles.txt");
 	public ABMAddVehicle()
 	{
 		InitializeComponent();
-
-		string appDataPath = FileSystem.AppDataDirectory;
-		string randomFileName = $"{Path.GetRandomFileName()}.vehicles.txt";
-
-		LoadVehicle(Path.Combine(appDataPath, randomFileName));
+		LoadVehicle();
 	}
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-		string[] data = new string[7];
-		data[0] = ABMModelo.Text;
-        data[1] = ABMMarca.Text;
-        data[2] = ABMYear.Text;
-        data[3] = ABMPlaca.Text;
-        data[4] = ABMPrecio.Text;
-        data[5] = ABMCiudad.Text;
-        data[6] = imagePath;
-		if (BindingContext is ABMModels.ABMVehicle vehicle)
-			File.WriteAllLines(vehicle.Filename, data);
-
-		await Shell.Current.GoToAsync("..");
+		ABMItem.abmModelo = ABMModelo.Text;
+        ABMItem.abmMarca = ABMMarca.Text;
+        ABMItem.abmYear = Int32.Parse(ABMYear.Text);
+        ABMItem.abmPlaca = ABMPlaca.Text;
+        ABMItem.abmPrecio = Double.Parse(ABMPrecio.Text);
+        ABMItem.abmCiudad = ABMCiudad.Text;
+        ABMItem.abmPicture = imagePath;
+        ABMItem.abmUserId = App.UserApp.Id;
+		if (ABMSaveButton.Text == "Editar")
+        {
+            App.VehiclesRepo.UpdateVehicle(ABMItem);
+        }
+        else
+        {
+            App.VehiclesRepo.AddNewVehicle(ABMItem);
+        }
+        await Shell.Current.GoToAsync("..");
     }
 
-	private void LoadVehicle(string filename) 
+	private void LoadVehicle(int value = -1) 
 	{
-		ABMModels.ABMVehicle vehicleModel = new ABMModels.ABMVehicle();
-		vehicleModel.Filename = filename;
+		if (value > -1)
+        {
+            ABMItem = App.VehiclesRepo.GetVehicle(value);
+            imagePath = ABMItem.abmPicture;
+            ABMSaveButton.Text = "Editar";
+        }
 
-		if (File.Exists(filename))
-		{
-			vehicleModel.abmModelo = File.ReadAllLines(filename)[0];
-			vehicleModel.abmMarca= File.ReadAllLines(filename)[1];
-            vehicleModel.abmYear = Int32.Parse(File.ReadAllLines(filename)[2]);
-			vehicleModel.abmPlaca= File.ReadAllLines(filename)[3];
-			vehicleModel.abmPrecio= Double.Parse(File.ReadAllLines(filename)[4]);
-			vehicleModel.abmCiudad= File.ReadAllLines(filename)[5];
-            vehicleModel.abmPicture = File.ReadAllLines(filename)[6];
-            ABMDeleteButton.IsVisible = true;
-		}
-
-		BindingContext = vehicleModel;
+		BindingContext = ABMItem;
 	}
 
-	public string ItemId
+	public int ItemId
 	{
 		set { LoadVehicle(value); }
 	}
@@ -104,15 +99,8 @@ public partial class ABMAddVehicle : ContentPage
         }
     }
 
-    private async void DeleteButton_Clicked(object sender, EventArgs e)
+    private async void CancelButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is ABMModels.ABMVehicle vehicle)
-        {
-            // Delete the file.
-            if (File.Exists(vehicle.Filename))
-                File.Delete(vehicle.Filename);
-        }
-
         await Shell.Current.GoToAsync("..");
     }
 }

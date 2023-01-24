@@ -7,9 +7,25 @@ public partial class ABMStyle : Grid
 		InitializeComponent();
 	}
 
-	public void SetData(string username, string imagePath)
+	public void LoadData()
 	{
-		ABMUserName.Text = username;
-		ABMUserImage.Source= imagePath;
+		if (App.UserApp != null)
+		{
+            ABMUserName.Text = App.UserApp.abmUsername;
+            ABMUserImage.Source = App.UserApp.abmProfilePicture;
+			ABMProfileUser.Text = "Perfil";
+        }
+		else
+		{
+			ABMUserName.Text = "Unknown User";
+			ABMUserImage.Source = ImageSource.FromFile("default_user.jpg");
+            ABMProfileUser.Text = "Registrarse";
+        }
 	}
+
+    private async void ABMProfileUser_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.FlyoutIsPresented = false;
+		await Shell.Current.GoToAsync(nameof(ABMRegisterUser));
+    }
 }

@@ -4,13 +4,15 @@
              x:Class="ABMAppFinal.ABMViews.ABMListEdit"
              Title="Mis Vehículos">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+        <ToolbarItem x:Name="Añadir"
+                     Clicked="Add_Clicked"
+                     IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
     <Grid BackgroundColor="White">
         <Image Source="wallpaper.jpg"
                Aspect="AspectFill"
                Opacity="0.5"/>
-        <CollectionView x:Name="vehiclesCollection"
+        <CollectionView x:Name="ABMVehicles"
                     ItemsSource="{Binding Vehicles}"
                     Margin="20"
                     SelectionMode="Single"
