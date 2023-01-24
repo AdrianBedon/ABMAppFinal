@@ -41,7 +41,7 @@
                    HorizontalTextAlignment="Start"/>
             <Button x:Name="ABMProfileUser"
                     BackgroundColor="Transparent"
-                    Text="Registrarse"
+                    Text="Registro"
                     TextColor="#F1C40F"
                     FontSize="15"
                     FontAttributes="Bold"

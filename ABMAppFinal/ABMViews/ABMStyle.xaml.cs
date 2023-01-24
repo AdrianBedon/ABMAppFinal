@@ -19,7 +19,7 @@ public partial class ABMStyle : Grid
 		{
 			ABMUserName.Text = "Unknown User";
 			ABMUserImage.Source = ImageSource.FromFile("default_user.jpg");
-            ABMProfileUser.Text = "Registrarse";
+            ABMProfileUser.Text = "Registro";
         }
 	}
 

@@ -8,7 +8,7 @@
                      Clicked="Add_Clicked"
                      IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
-    <Grid BackgroundColor="White">
+    <Grid BackgroundColor="#1B2631">
         <Image Source="wallpaper.jpg"
                Aspect="AspectFill"
                Opacity="0.5"/>
@@ -30,9 +30,9 @@
                                WidthRequest="100"
                                Aspect="AspectFill"/>
                             <StackLayout Grid.Column="1">
-                                <Label Text="{Binding abmModelo}" FontAttributes="Bold"/>
-                                <Label Text="{Binding abmMarca}"/>
-                                <Label Text="{Binding abmYear}" FontAttributes="Italic" TextColor="Gray"/>
+                                <Label Text="{Binding abmModelo}" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="{Binding abmMarca}" TextColor="White"/>
+                                <Label Text="{Binding abmYear}" FontAttributes="Italic" TextColor="#F1C40F"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
