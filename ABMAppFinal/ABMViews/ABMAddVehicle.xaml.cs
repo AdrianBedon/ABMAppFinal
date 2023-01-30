@@ -23,7 +23,8 @@ public partial class ABMAddVehicle : ContentPage
         ABMItem.abmCiudad = ABMCiudad.Text;
         ABMItem.abmPicture = imagePath;
         ABMItem.abmUserId = App.UserApp.Id;
-		if (ABMSaveButton.Text == "Editar")
+        ABMItem.abmDate = DateTime.ParseExact(ABMFecha.Text, "dd/MM/yyyy HH:mm:ss", null);
+        if (ABMSaveButton.Text == "Editar")
         {
             App.VehiclesRepo.UpdateVehicle(ABMItem);
         }

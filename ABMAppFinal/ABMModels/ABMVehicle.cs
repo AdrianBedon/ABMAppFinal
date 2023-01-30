@@ -22,5 +22,6 @@ namespace ABMAppFinal.ABMModels
         public string abmCiudad { get; set; }
         public string abmPicture { get; set; }
         public int abmUserId { get; set; }
+        public DateTime abmDate { get; set; }
     }
 }

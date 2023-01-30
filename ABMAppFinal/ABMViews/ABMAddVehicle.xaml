@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels = "clr-namespace:ABMAppFinal.ABMViewModel"
              x:Class="ABMAppFinal.ABMViews.ABMAddVehicle"
              Title="Agregar Vehiculo">
     <Grid BackgroundColor="#1B2631">
@@ -80,6 +81,14 @@
                        Text="{Binding abmCiudad}"
                        TextColor="White"
                        HeightRequest="40"/>
+                <Label Text="Fecha Creación:"
+                       HorizontalOptions="Start"
+                       FontAttributes="Bold"
+                       TextColor="#F1C40F"/>
+                <Label x:Name="ABMFecha"
+                       Text ="{Binding DateTime, StringFormat='{0:dd/MM/yyyy HH:mm:ss}'}"
+                       BindingContext="{viewmodels:ABMDateViewModel}"
+                       TextColor="White"/>
                 <Button x:Name="ABMImage"
                         Text="Add Photo"
                         Clicked="OnAddPhoto_Clicked"
