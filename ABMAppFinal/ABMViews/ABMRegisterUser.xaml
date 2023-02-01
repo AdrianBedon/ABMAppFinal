@@ -27,16 +27,28 @@
                     Clicked="ABMImageUser_Clicked"
                     BackgroundColor="Transparent"
                     WidthRequest="200"/>
-            <Label Text="Nombre de Usuario" 
-                   HorizontalOptions="Start"
-                   FontSize="15"
-                   FontAttributes="Bold"
-                   TextColor="#F1C40F"/>
-            <Entry x:Name="ABMUsername"
-                   Placeholder="Username"
-                   HeightRequest="40"
-                   TextColor="White"
-                   Text="{Binding abmUsername}"/>
+            <Grid ColumnDefinitions="*,*">
+                <StackLayout>
+                    <Label Text="Nombre de Usuario" 
+                           HorizontalOptions="Start"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="#F1C40F"/>
+                    <Entry x:Name="ABMUsername"
+                           Placeholder="Username"
+                           HeightRequest="40"
+                           TextColor="White"
+                           Text="{Binding abmUsername}"/>
+                </StackLayout>
+                <Button Grid.Column="1"
+                        x:Name="ABMRandomUsername"
+                        Text="Random"
+                        FontAttributes="Bold"
+                        BackgroundColor="Transparent"
+                        TextColor="#F1C40F"
+                        VerticalOptions="End"
+                        Clicked="OnRandomUser_Clicked"/>
+            </Grid>
             <Label Text="Nombres" 
                    HorizontalOptions="Start"
                    FontSize="15"
